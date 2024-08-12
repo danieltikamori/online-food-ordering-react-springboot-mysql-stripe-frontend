@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import MenuCard from "./MenuCard";
 
 const foodCategories = [
   "pizza",
@@ -26,6 +27,8 @@ const foodTypes = [
   { label: "Non-Vegetarian", value: "non_vegetarian" },
   { label: "Seasonal", value: "seasonal" }
 ];
+
+const menu=[1,1,1,1,1,1]
 
 const RestaurantDetails = () => {
 
@@ -102,7 +105,7 @@ const RestaurantDetails = () => {
       <Divider />
       <section className="pt-[2rem] lg:flex relative">
         <div className="space-y-10 lg:w-[20%] filter">
-          <div className="box space-y-5 lg:sticky top-28">
+          <div className="box space-y-5 lg:sticky top-28 p-5 d">
             <div>
               <Typography variant="h5" sx={{ paddingBottom: "1rem" }}>
                 Food type
@@ -121,6 +124,7 @@ const RestaurantDetails = () => {
                 </RadioGroup>
               </FormControl>
             </div>
+            <Divider/>
             <div>
               <Typography variant="h5" sx={{ paddingBottom: "1rem" }}>
                 Food Category
@@ -142,7 +146,9 @@ const RestaurantDetails = () => {
           </div>
         </div>
 
-        <div className="space-y-5 lg:w-[80%] lg:pl-10">menu</div>
+        <div className="space-y-5 lg:w-[80%] lg:pl-10">
+{menu.map((item, index)=><MenuCard key={index}/>)}
+        </div>
       </section>
     </div>
   );
