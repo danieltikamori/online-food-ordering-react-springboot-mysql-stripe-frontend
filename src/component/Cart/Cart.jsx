@@ -15,7 +15,7 @@ import AddressCard from "./AddressCard";
 import CartItem from "./CartItem";
 import PropTypes from 'prop-types';
 
-const style = {
+export const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
