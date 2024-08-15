@@ -11,6 +11,8 @@ import {
 import { Formik, Field, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { registerUser } from "../State/Authentication/Action";
+import { useDispatch } from "react-redux";
 
 const registerInitialValues = {
   fullName: "",
@@ -28,17 +30,17 @@ const validationSchema = Yup.object().shape({
     .email("Invalid email")
     .max(100, "Email must be 100 characters or less")
     .required("Email is required"),
-    // .test("email-exists", "Email already exists", async (value) => {
-    //   const response = await fetch("/api/check-email", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ email: value }),
-    //   });
-    //   const data = await response.json();
-    //   return !data.exists;
-    // }),
+  // .test("email-exists", "Email already exists", async (value) => {
+  //   const response = await fetch("/api/v1/check-email", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ email: value }),
+  //   });
+  //   const data = await response.json();
+  //   return !data.exists;
+  // }),
   password: Yup.string()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+=-{};:>./<,])(?=.*\d).*$/,
@@ -55,10 +57,12 @@ const validationSchema = Yup.object().shape({
 
 export default function RegisterForm() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (values) => {
     // Add parameterized query logic here (Avoid SQL injection)
     // To verify if there are same registered emails, you'll need to make an API call to your backend to check if the email already exists in your database.
     console.log("form values", values);
+    dispatch(registerUser({ userData: values, navigate }));
   };
 
   return (

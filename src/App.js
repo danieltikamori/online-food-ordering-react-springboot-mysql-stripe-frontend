@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./component/Navbar/Navbar";
@@ -11,16 +11,24 @@ import Cart from "./component/Cart/Cart";
 import Profile from "./component/Profile/Profile";
 import { CustomerRoute } from "./Routers/CustomerRoute";
 import Auth from "./component/Auth/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "./component/State/Authentication/Action";
 
 function App() {
+  const dispatch = useDispatch();
+  // const jwt = auth.jwt || localStorage.getItem("jwt");
+  const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector((store) => store);
+
+  useEffect(() => {
+    dispatch(getUser(jwt || auth.jwt));
+  }, [dispatch, auth.jwt, jwt]);
+  // }, [dispatch, jwt]);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      {/* <Navbar/> */}
-      {/* <Home/> */}
-      {/* <RestaurantDetails/> */}
-      {/* <Cart /> */}
-      {/* <Profile/> */}
+
       <CustomerRoute />
     </ThemeProvider>
   );
