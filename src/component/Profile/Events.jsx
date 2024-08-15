@@ -5,7 +5,7 @@ const Events = () => {
   return (
     <div className='mt-5 px5 flex flex-wrap gap-5'>
       
-{[1,1,1,1].map((item)=><EventCard key={item}/>)}
+{[1,1,1,1].map((item)=><EventCard key={item.id}/>)}
 
     </div>
   )

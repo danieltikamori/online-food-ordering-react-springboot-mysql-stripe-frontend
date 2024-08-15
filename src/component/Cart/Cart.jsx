@@ -58,7 +58,7 @@ const Cart = () => {
       <main className="lg:flex justify-between">
         <section className="lg:w-[30%] space-y-6 lg:min-h-screen pt-10">
           {items.map((item) => (
-            <CartItem key={item} />
+            <CartItem key={item.id} />
           ))}
 
           <Divider />

@@ -134,7 +134,7 @@ const RestaurantDetails = () => {
                 <RadioGroup onChange={handleFilter} name="food_type" value={foodType}>
                   {foodCategories.map((item) => (
                     <FormControlLabel
-                      key={item}
+                      key={item.id}
                       value={item}
                       control={<Radio />}
                       label={item}
@@ -147,7 +147,7 @@ const RestaurantDetails = () => {
         </div>
 
         <div className="space-y-5 lg:w-[80%] lg:pl-10">
-{menu.map((item, index)=><MenuCard key={index}/>)}
+{menu.map((item)=><MenuCard key={item.id}/>)}
         </div>
       </section>
     </div>
