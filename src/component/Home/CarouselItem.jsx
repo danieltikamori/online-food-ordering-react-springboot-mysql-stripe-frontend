@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 
 const CarouselItem = ({ image, title }) => {
   return (
@@ -14,7 +16,7 @@ const CarouselItem = ({ image, title }) => {
 };
 
 CarouselItem.propTypes = {
-  image: 'string',
-  title: 'string',
+  title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
 };
 export default CarouselItem;
